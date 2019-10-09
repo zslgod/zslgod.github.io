@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[海报生成]]></title>
+    <url>%2F2019%2F10%2F09%2F%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90%2F</url>
+    <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;script src=&quot;https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js&quot;&gt;&lt;/script&gt; &lt;title&gt;保存图片&lt;/title&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;Canvas&quot;&gt; &lt;canvas id=&quot;myCanvas&quot; width=&quot;375&quot; height=&quot;672&quot; style=&quot;border-radius: 10px;margin:0 auto&quot;&gt;&lt;/canvas&gt; &lt;button id=&quot;btn&quot;&gt;保存 &lt;/button&gt; &lt;/div&gt;&lt;/body&gt;&lt;style&gt; Canvas &#123; width: 500px; margin: 0 auto; &#125;&lt;/style&gt;&lt;script&gt; function buildImg() &#123; var mycan = document.getElementById(&apos;myCanvas&apos;); var ctx = mycan.getContext(&quot;2d&quot;); var img = new Image(); img.src = &apos;./hongbao.png&apos; img.onload = () =&gt; &#123; ctx.drawImage(img, 0, 0, 375, 672); var img2 = new Image(); // img2.setAttribute(&quot;crossOrigin&quot;, &quot;anonymous&quot;); img2.src = &apos;./logo.png&apos;; // 二维码 img2.onload = () =&gt; &#123; ctx.drawImage(img2, 107, 330, 160, 160); ctx.fillStyle = &quot;rgb(0,0,0)&quot;; ctx.font = &quot;25px Arial &quot;; ctx.fillText(&quot;扫码抢USDT红包&quot;, 90, 520); &#125;; &#125;; &#125; function DwImage() &#123; console.log(6666); var canvas = document.getElementById(&quot;myCanvas&quot;); var image = new Image(); image.src = canvas.toDataURL(&quot;image/png&quot;); let a = document.createElement(&quot;a&quot;); a.download = &quot;invitation&quot;; a.href = image.src; a.click(); &#125;; buildImg(); $(&apos;#btn&apos;).click(function () &#123; DwImage() &#125;)&lt;/script&gt;&lt;/html&gt;]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[路由懒加载]]></title>
+    <url>%2F2019%2F10%2F09%2F%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD%2F</url>
+    <content type="text"><![CDATA[1234567&#123; path: &apos;/wallet/lock&apos;, name: &apos;lock&apos;, component: resolve =&gt; require([&apos;../pages/wallet/common/lock.vue&apos;], resolve)&#125;]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>router</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[复制]]></title>
+    <url>%2F2019%2F10%2F09%2F%E5%A4%8D%E5%88%B6%2F</url>
+    <content type="text"><![CDATA[安装1npm install --save vue-clipboard2 引用1234import Vue from &apos;vue&apos;import VueClipboard from &apos;vue-clipboard2&apos; Vue.use(VueClipboard) 使用1234567891011121314this.$copyText(data).then( () =&gt; &#123; this.$message(&#123; message: &quot;复制成功&quot;, type: &quot;success&quot; &#125;); &#125;, () =&gt; &#123; this.$message(&#123; message: &quot;复制失败&quot;, type: &quot;warning&quot; &#125;); &#125; );]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>复制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[axios安装配置]]></title>
+    <url>%2F2019%2F10%2F09%2Faxios%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[安装axios和Qs 安装 123npm install axios --savenpm install --save axios vue-axios qs 引入 123import axios from &apos;axios&apos;import qs from &apos;qs&apos; //qs 用来解决vue中post请求以 a=a&amp;b=b 的格式（详情） 配置 http.js 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051import Vue from &apos;vue&apos;import axios from &quot;axios&quot;;import Qs from &quot;qs&quot;;//axios 配置 [封装axios]axios.defaults.withCredentials = true; //vue前后端分离解决每次请求session都会变的问题axios.defaults.transformRequest = [function(data) &#123; // if (data.toString() == &quot;[object FormData]&quot;) &#123; // return data; // &#125; else &#123; // return Qs.stringify(data) // &#125; return Qs.stringify(data)&#125;];let hosthost = process.env.NODE_ENV === &apos;development&apos; ? &apos;/&apos; : &apos;http://abex.jinjifuweng.com/&apos; // 根据 process.env.NODE_ENV 的值判断当前是什么环境 // host = process.env.NODE_ENV === &apos;production&apos; ? &apos;/&apos; : &apos;http://abex.jinjifuweng.com/&apos; // 根据 process.env.NODE_ENV 的值判断当前是什么环境const instance = axios.create(&#123; baseURL: host, timeout: 10000, withCredentials: true, &#125;) // 添加响应拦截器instance.interceptors.response.use(function(response) &#123; // 对响应数据做点什么 if (response.data.status == -1) &#123; // Vue.prototype.$message(&#123; // message: response.data.msg, // type: &quot;error&quot;, // duration: 2000 // &#125;); console.log(response.data.status); &#125; else if (response.data.status == 0) &#123; console.log(response.data.status); &#125; return response;&#125;, function(error) &#123; // 对响应错误做点什么 // Vue.prototype.$message(&#123; // message: &quot;请求失败&quot;, // type: &quot;error&quot;, // duration: 2000 // &#125;); return Promise.reject(error);&#125;);Vue.prototype.$http = instance; main.js引入 1import &apos;./http/http.js&apos; 使用123this.$http.post(url,data).then(res=&gt;&#123;&#125;)this.$http.get(url).then(res=&gt;&#123;&#125;)]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>axios</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[less安装]]></title>
+    <url>%2F2019%2F10%2F09%2Fless%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[1npm install less less-loader --save-dev]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>less</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[test]]></title>
+    <url>%2F2019%2F10%2F09%2Ftest%2F</url>
+    <content type="text"><![CDATA[好啊]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F10%2F09%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
