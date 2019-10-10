@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git常用命令]]></title>
+    <url>%2F2019%2F10%2F10%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[版本控制系统： 1、CVS和SVN是集中式的版本控制系统。 2、Git是分布式版本控制系统； 集中式的版本控制系统： 版本库是放在中央服务器的，一旦出问题，就无法干活。干活的时候用自己电脑，所以需要从中央服务器取得最新版本，修改完后再把自己的活推送给中央服务器。最大毛病是必须联网才能工作，网速慢时会被憋死。 分布式版本控制系统： 有一台“中央服务器的”的电脑，用于多人合作交换修改的。它安全性更高，因为每个电脑都有完整的版本库，一旦出问题，可以从其他电脑复制。有强大的分支管理。 安装git和基本用法 1、从git 官网下载程序，默认安装即可。 2、设置账号和邮箱关联，账号和邮箱可以是码云、GitLab…的账号都行： 12$ git config --global user.name &quot;Your Name&quot; $ git config --global user.email &quot;email@example.com&quot; 3、选择合适地方，创建空目录： 12$ mkdir test //创建空目录，目录名字为test$ cd test //进入test目录 4、初始化仓库，把目录变成git 可以管理的仓库： 1$ git init$ ls //查看文件$ ls -ah //如果.git目录是影藏的话，可以通过这个命令查看.git目录 5、提交文件到git 上 12$ git add . //告诉Git，把文件添加到仓库，此时是将修改添加到暂存区，可add 多次$ git commit -m &apos;本次提交的备注&apos; //告诉Git把文件提交到仓库，此时是吧暂存区的所有内容提交到当前分支，可一次提交很多文件 6、查看当前仓库的状态 1$ git status //查看版本库状态，什么被修改过但还没提交的$ git diff //查看当前相对上一次提交修改的内容 7、版本回退 1234567891011$ git log //显示从最近到最远的提交日志$ git log --pretty== oneline //显示log,但是不显示很多凌乱的信息q //显示log版本信息有很多，使用q键停止查看git reset —hard head^ //回退到上一个版本git reset —hard head^^ //回退到上上个版本git reset —hard head~100 //回退到之前100个版本git reset —hard +commit_id //回到某个版本号的版本git reset — hard 版本号 //版本回退多次后需要恢复最新版本$ git reflog //查看曾经使用过的命令 8、撤销修改 1$ git checkout -- test.html 9、删除文件 12345$ rm test.index //可直接在文件管理中删除文件，要不用rm 命令去删除$ git rm test.html //从版本库中删除$ git commit -m &apos;删除 test.html文件&apos;$ git branch -D &lt;name&gt; //丢弃一个没有被合并过的分支，可以通过强行删除。 远程仓库 1、创建SSH Key(需要生成 id_rsa私钥 和 id_rsa.pub公钥 两个文件) 1$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot; 2、登录GitHub，设置”SSH Keys”,复制 id_rsa.pub 内容去添加。可允许添加多个SSH。 3、关联远程仓库 1$ git remote add origin git@github.com：账户名 4、将本地的内容推送到远程库分支上 12$ git push -u origin 分支名字 //第一次推送分支所有内容$ git push origin 分支名字 //推送最新修改 5、查看远程仓库信息 123$ git remote $ git remote -v //查看更加详细的信息 克隆 1$ git clone 需要克隆的仓库地址 创建分支，并且切换过去 1234567$ git checkout -b 新分支的名字 //创建分支并且切入进分支或者等同于$ git branch 分支名 //创建分支$ git checkout 分支名 //切换到分支$ git branch //查看分支 合并分支 12345678$ git checkout -b dev$ git branch$ git add .$ git commit -m &apos;提交test文件到dev分支&apos;$ git checkout master //切换到主分支$ git merge dev //将dev分支上的内容合并到master分支上，合并 指定分支 到 当前分支$ git merge --no-ff -m &quot;merge with no-ff&quot; dev //合并分支时加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，通过git log查看$ git branch -d dev //删除dev分支 解决冲突： 同一文件修改冲突，需要手动解决冲突后再提交。git status可查看冲突，根据标记可修改冲突部分，修改结束后再重新提交。 12$ git pull //拉取远程内容$ git log --graph //命令可以看到分支合并图。 关联本地仓库和远程仓库 1$ git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt; 创建标签 123456$ git branch $ git checkout dev$ git tag v1.0 //为当前需要打标签的分支打新标签$ git tag //查看所有标签$ git tag -a 指定标签信息 -m &quot;blablabla...&quot; //可指定标签信息 操作标签 1234$ git push origin &lt;tagname&gt; //可以推送一个本地标签；$ git push origin --tags //可以推送全部未推送过的本地标签；$ git tag -d &lt;tagname&gt; //可以删除一个本地标签；$ git push origin :refs/tags/&lt;tagname&gt; //可以删除一个远程标签。 改变Git颜=色 1$ git config --global color.ui true]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ui框架样式修改]]></title>
+    <url>%2F2019%2F10%2F10%2Fui%E6%A1%86%E6%9E%B6%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9%2F</url>
+    <content type="text"><![CDATA[类名前 添加 `/deep/`]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>样式修改</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[多页面配置]]></title>
+    <url>%2F2019%2F10%2F10%2F%E5%A4%9A%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[vue.config.js 配置1234567891011121314151617181920212223module.exports = &#123; pages: &#123; index: &#123; // page 的入口 entry: &apos;src/index/main.js&apos;, // 模板来源 template: &apos;public/index.html&apos;, // 在 dist/index.html 的输出 filename: &apos;index.html&apos;, // 当使用 title 选项时， // template 中的 title 标签需要是 &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt; title: &apos;Index Page&apos;, // 在这个页面中包含的块，默认情况下会包含 // 提取出来的通用 chunk 和 vendor chunk。 chunks: [&apos;chunk-vendors&apos;, &apos;chunk-common&apos;, &apos;index&apos;] &#125;, // 当使用只有入口的字符串格式时， // 模板会被推导为 `public/subpage.html` // 并且如果找不到的话，就回退到 `public/index.html`。 // 输出文件名会被推导为 `subpage.html`。 subpage: &apos;src/subpage/main.js&apos; &#125;&#125;]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>多页面</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[海报生成]]></title>
     <url>%2F2019%2F10%2F09%2F%E6%B5%B7%E6%8A%A5%E7%94%9F%E6%88%90%2F</url>
     <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt; &lt;script src=&quot;https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js&quot;&gt;&lt;/script&gt; &lt;title&gt;保存图片&lt;/title&gt;&lt;/head&gt;&lt;body&gt; &lt;div class=&quot;Canvas&quot;&gt; &lt;canvas id=&quot;myCanvas&quot; width=&quot;375&quot; height=&quot;672&quot; style=&quot;border-radius: 10px;margin:0 auto&quot;&gt;&lt;/canvas&gt; &lt;button id=&quot;btn&quot;&gt;保存 &lt;/button&gt; &lt;/div&gt;&lt;/body&gt;&lt;style&gt; Canvas &#123; width: 500px; margin: 0 auto; &#125;&lt;/style&gt;&lt;script&gt; function buildImg() &#123; var mycan = document.getElementById(&apos;myCanvas&apos;); var ctx = mycan.getContext(&quot;2d&quot;); var img = new Image(); img.src = &apos;./hongbao.png&apos; img.onload = () =&gt; &#123; ctx.drawImage(img, 0, 0, 375, 672); var img2 = new Image(); // img2.setAttribute(&quot;crossOrigin&quot;, &quot;anonymous&quot;); img2.src = &apos;./logo.png&apos;; // 二维码 img2.onload = () =&gt; &#123; ctx.drawImage(img2, 107, 330, 160, 160); ctx.fillStyle = &quot;rgb(0,0,0)&quot;; ctx.font = &quot;25px Arial &quot;; ctx.fillText(&quot;扫码抢USDT红包&quot;, 90, 520); &#125;; &#125;; &#125; function DwImage() &#123; console.log(6666); var canvas = document.getElementById(&quot;myCanvas&quot;); var image = new Image(); image.src = canvas.toDataURL(&quot;image/png&quot;); let a = document.createElement(&quot;a&quot;); a.download = &quot;invitation&quot;; a.href = image.src; a.click(); &#125;; buildImg(); $(&apos;#btn&apos;).click(function () &#123; DwImage() &#125;)&lt;/script&gt;&lt;/html&gt;]]></content>
